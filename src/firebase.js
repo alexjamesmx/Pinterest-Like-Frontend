@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getMessaging } from "firebase/messaging";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "@firebase/firestore";
-require("dotenv").config();
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
