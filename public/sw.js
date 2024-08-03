@@ -1,4 +1,3 @@
-importScripts("/firebase-messaging-sw.js");
 importScripts("/js/sw-utils.js");
 importScripts("https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js");
 importScripts("/js/sw-db.js");
