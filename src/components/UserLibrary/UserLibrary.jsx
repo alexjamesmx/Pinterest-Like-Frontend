@@ -4,6 +4,7 @@ import { ImagesContext } from "../../customHooks/ImagesContext";
 import LibraryList from "./LibraryList";
 import { Loading } from "../Loading";
 import PropTypes from "prop-types";
+import { PlusCircleFill } from "react-bootstrap-icons";
 
 const UserLibrary = memo(({ showCategory, openDrawerBottom }) => {
   const { library, l_loading } = useContext(ImagesContext);
@@ -42,13 +43,24 @@ const UserLibrary = memo(({ showCategory, openDrawerBottom }) => {
           emptyMessage="No saved images"
         />
       ) : (
-        <LibraryList
-          libraries={otherLibraries}
-          displayLibrary={displayLibrary}
-          emptyMessage="No libraries created yet"
-          showCreateButton
-          onCreateLibrary={handleCreateLibrary}
-        />
+        <>
+          <LibraryList
+            libraries={otherLibraries}
+            displayLibrary={displayLibrary}
+            emptyMessage="No libraries created yet"
+            showCreateButton
+            onCreateLibrary={handleCreateLibrary}
+          />
+          <div className="flex justify-center">
+            <PlusCircleFill
+              width={40}
+              height={40}
+              className="mt-24 text-red-900 hover:text-red-700 hover:scale-110 transition-transform duration-300"
+              alt="Add new library"
+              onClick={handleCreateLibrary}
+            />
+          </div>
+        </>
       )}
     </>
   );

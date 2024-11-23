@@ -141,7 +141,7 @@ function CustomNavbar({ children }) {
           {navList}
         </Collapse>
       </Navbar>
-      <div className="p-8">{children}</div>
+      <div className="p-8 h-[calc(100vh-6em)]">{children}</div>{" "}
     </div>
   );
 }

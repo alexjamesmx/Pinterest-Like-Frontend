@@ -11,7 +11,9 @@ const CategoryContext = createContext();
 
 const Perfil = () => {
   const { user, setUser } = useContext(UserContext);
-  const [showCategory, setShowCategory] = useState("saved");
+  const [showCategory, setShowCategory] = useState(
+    localStorage.getItem("category") || "saved"
+  );
   const [openBottom, setOpenBottom] = useState(false);
   const openDrawerBottom = () => setOpenBottom(true);
   const closeDrawerBottom = () => setOpenBottom(false);
@@ -23,6 +25,7 @@ const Perfil = () => {
   };
 
   const toggleCategory = (category) => {
+    localStorage.setItem("category", category);
     setShowCategory(category);
   };
 
@@ -38,7 +41,7 @@ const Perfil = () => {
               rel="preload"
               src={user.photoURL || DefaultPhoto}
               alt="Foto de perfil"
-              className="rounded-full outline outline-4 outline-blue-gray-900 w-30 h-30"
+              className="outline-blue-gray-900 w-30 h-30 rounded-full outline outline-4"
             />
             <div className="ml-4">
               <h3 className="font-bold">{user.email}</h3>
@@ -49,7 +52,7 @@ const Perfil = () => {
                 </h3>
 
                 <button
-                  className="bg-blue-gray-700 text-white p-3 rounded-full mt-3"
+                  className="bg-blue-gray-700 mt-3 rounded-full p-3 text-white"
                   onClick={handleEditProfile}
                 >
                   Editar perfil
@@ -60,7 +63,7 @@ const Perfil = () => {
           <div className="flex flex-row justify-center gap-5">
             <h3
               className={`cursor-pointer ${
-                showCategory === "saved" ? "underline text-blue-500" : ""
+                showCategory === "saved" ? "text-blue-500 underline" : ""
               }`}
               onClick={() => toggleCategory("saved")}
             >
@@ -91,8 +94,6 @@ const Perfil = () => {
         user={user}
         setUser={setUser}
       />
-
-      <></>
     </CategoryContext.Provider>
   );
 };

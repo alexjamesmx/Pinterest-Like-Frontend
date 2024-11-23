@@ -7,15 +7,23 @@ import React, {
 } from "react";
 import ListCategoryImages from "../../components/ListImages/ListCategoryImages";
 import axios from "axios";
-import { ArrowLeftSquareFill } from "react-bootstrap-icons";
+import { ArrowLeftSquareFill, PencilFill } from "react-bootstrap-icons";
 import { ImagesContext } from "../../customHooks/ImagesContext";
 import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
+import { DrawerBottom } from "../../components/imageDetails/DrawerBottom";
 
-const CategoryView = memo(({ categorySelected }) => {
+const CategoryView = memo(({ categorySelected: initialCategorySelected }) => {
   const { library } = useContext(ImagesContext);
   const [images, setImages] = useState([]);
+  const [categorySelected, setCategorySelected] = useState(
+    initialCategorySelected
+  );
   const navigate = useNavigate();
+
+  const [openBottom, setOpenBottom] = useState(false);
+  const openDrawerBottom = () => setOpenBottom(true);
+  const closeDrawerBottom = () => setOpenBottom(false);
 
   const goBack = () => {
     navigate(-1);
@@ -55,6 +63,14 @@ const CategoryView = memo(({ categorySelected }) => {
     fetchImages();
   }, [fetchImages, categorySelected, library]);
 
+  const editCategory = () => {
+    openDrawerBottom();
+  };
+
+  const handleCategoryUpdate = (newCategoryName) => {
+    setCategorySelected(newCategoryName);
+  };
+
   if (!images) {
     return <div>Loading...</div>;
   }
@@ -69,11 +85,29 @@ const CategoryView = memo(({ categorySelected }) => {
             width={40}
             height={40}
           />
-          <h3 className="uppercase ms-6 self-center">{categorySelected}</h3>
+          <div className="w-full flex justify-between">
+            <h3 className="ms-6 self-center">{categorySelected}</h3>
+            {categorySelected !== "saved" ? (
+              <div
+                className="flex gap-2 cursor-pointer self-center"
+                onClick={() => editCategory()}
+              >
+                <PencilFill />
+                <p>Editar</p>
+              </div>
+            ) : null}
+          </div>
         </div>
 
         <ListCategoryImages images={images} />
       </div>
+
+      <DrawerBottom
+        openBottom={openBottom}
+        closeDrawerBottom={closeDrawerBottom}
+        categorySelected={categorySelected}
+        onCategoryUpdate={handleCategoryUpdate} // Pass the callback to DrawerBottom
+      />
     </>
   );
 });
@@ -82,4 +116,5 @@ CategoryView.displayName = "CategoryView";
 CategoryView.propTypes = {
   categorySelected: PropTypes.string.isRequired,
 };
+
 export default CategoryView;
