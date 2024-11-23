@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-// import { Navbar, Collapse, IconButton } from "@material-tailwind/react";
-// import { Link, useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Navbar, Collapse, IconButton } from "@material-tailwind/react";
+import { Link, useLocation } from "react-router-dom";
 import { UserContext } from "../../customHooks/UserContext";
 // import Logo from "../../assets/logos/logo40.svg";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function CustomNavbar({ children }) {
@@ -11,88 +11,87 @@ function CustomNavbar({ children }) {
   console.log("CustomNavbar user:", user);
   console.log("CustomNavbar logout function:", logout);
 
-  // const location = useLocation();
-  // const navigate = useNavigate();
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   logout();
-  //   navigate("/login");
-  // };
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
-  // const isActive = (path) => {
-  //   return location.pathname === path;
-  // };
-  // const [openNav, setOpenNav] = React.useState(false);
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
+  const [openNav, setOpenNav] = React.useState(false);
 
-  // useEffect(() => {
-  //   window.addEventListener(
-  //     "resize",
-  //     () => window.innerWidth >= 960 && setOpenNav(false)
-  //   );
-  // }, []);
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+  }, []);
 
-  // const navList = (
-  //   <ul className="flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 w-full py-">
-  //     {user && (
-  //       <>
-  //         <Link
-  //           to="/profile"
-  //           className="nav-link-custom self-center items-center"
-  //         >
-  //           <img
-  //             src={user?.photoURL || "../../assets/user-default-120.webp"}
-  //             alt="foto de perfil"
-  //             width="50"
-  //             height="50"
-  //             className={`rounded-full cursor-pointer align-center ${
-  //               isActive("/profile") ? "ring-4 ring-deep-orange-900" : ""
-  //             }`}
-  //           />
-  //         </Link>
-  //       </>
-  //     )}
+  const navList = (
+    <ul className="flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 w-full py-">
+      {user && (
+        <>
+          <Link
+            to="/profile"
+            className="nav-link-custom self-center items-center"
+          >
+            <img
+              src={user?.photoURL || "../../assets/user-default-120.webp"}
+              alt="foto de perfil"
+              width="50"
+              height="50"
+              className={`rounded-full cursor-pointer align-center ${
+                isActive("/profile") ? "ring-4 ring-deep-orange-900" : ""
+              }`}
+            />
+          </Link>
+        </>
+      )}
 
-  //     <Link
-  //       to="/"
-  //       className={`p-1 font-normal items-center cursor-pointer text-black text-center  ${
-  //         isActive("/") ? "bg-deep-orange-900 text-white rounded px-4" : ""
-  //       }`}
-  //     >
-  //       Home
-  //     </Link>
-  //     {!user ? (
-  //       <Link
-  //         to="/login"
-  //         className={`p-1 font-normal items-center cursor-pointer text-black text-center w-full ${
-  //           isActive("/login")
-  //             ? "bg-deep-orange-900 text-white rounded px-4"
-  //             : ""
-  //         }`}
-  //       >
-  //         Log In
-  //       </Link>
-  //     ) : (
-  //       <Link
-  //         onClick={handleLogout}
-  //         className={`p-1 font-normal items-center cursor-pointer text-black  text-center ${
-  //           isActive("/login") ? "bg-blue-gray-900 text-white rounded px-4" : ""
-  //         }`}
-  //       >
-  //         Logout
-  //       </Link>
-  //     )}
-  //   </ul>
-  // );
+      <Link
+        to="/"
+        className={`p-1 font-normal items-center cursor-pointer text-black text-center  ${
+          isActive("/") ? "bg-deep-orange-900 text-white rounded px-4" : ""
+        }`}
+      >
+        Home
+      </Link>
+      {!user ? (
+        <Link
+          to="/login"
+          className={`p-1 font-normal items-center cursor-pointer text-black text-center w-full ${
+            isActive("/login")
+              ? "bg-deep-orange-900 text-white rounded px-4"
+              : ""
+          }`}
+        >
+          Log In
+        </Link>
+      ) : (
+        <Link
+          onClick={handleLogout}
+          className={`p-1 font-normal items-center cursor-pointer text-black  text-center ${
+            isActive("/login") ? "bg-blue-gray-900 text-white rounded px-4" : ""
+          }`}
+        >
+          Logout
+        </Link>
+      )}
+    </ul>
+  );
 
   return (
     <div>
-      navbar
-      {/* <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
+      <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900 mx-14">
           <div className="mr-4 cursor-pointer py-1.5 font-medium flex items-center gap-2">
             <Link to="/">
               {" "}
-              <img src={Logo} alt="Logo" width="40" height="40" />
+              {/* <img src={Logo} alt="Logo" width="40" height="40" /> */}
             </Link>
           </div>
           <div className="flex items-center gap-4">
@@ -145,8 +144,7 @@ function CustomNavbar({ children }) {
           {navList}
         </Collapse>
       </Navbar>
-      <div className="p-8 h-[calc(100vh-6em)]">{children}</div>{" "} */}
-      {children}
+      <div className="p-8 h-[calc(100vh-6em)]">{children}</div>{" "}
     </div>
   );
 }
