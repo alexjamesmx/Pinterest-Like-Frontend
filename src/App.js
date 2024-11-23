@@ -5,7 +5,7 @@ import {
   Navigate,
   useSearchParams,
 } from "react-router-dom";
-import CustomNavbar from "./components/navbar/CustomNavbar";
+// import CustomNavbar from "./components/navbar/CustomNavbar";
 // import { UserProvider } from "./customHooks/UserContext";
 // import { ImagesProvider } from "./customHooks/ImagesContext";
 import { ToastContainer } from "react-toastify";
@@ -112,9 +112,9 @@ const App = () => {
         <Suspense fallback={<div>Loading...</div>}>
           <ToastContainer />
 
-          <CustomNavbar>
-            <AppRoutes />
-          </CustomNavbar>
+          {/* <CustomNavbar> */}
+          <AppRoutes />
+          {/* </CustomNavbar> */}
         </Suspense>
         {/* </ImagesProvider> */}
         {/* </UserProvider> */}
