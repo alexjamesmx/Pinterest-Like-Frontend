@@ -6,7 +6,7 @@ import {
   useSearchParams,
 } from "react-router-dom";
 // import CustomNavbar from "./components/navbar/CustomNavbar";
-// import { UserProvider } from "./customHooks/UserContext";
+import { UserProvider } from "./customHooks/UserContext";
 // import { ImagesProvider } from "./customHooks/ImagesContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -107,17 +107,17 @@ const App = () => {
   return (
     <BrowserRouter basename={"/"}>
       <NetworkProvider>
-        {/* <UserProvider> */}
-        {/* <ImagesProvider> */}
-        <Suspense fallback={<div>Loading...</div>}>
-          <ToastContainer />
+        <UserProvider>
+          {/* <ImagesProvider> */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <ToastContainer />
 
-          {/* <CustomNavbar> */}
-          <AppRoutes />
-          {/* </CustomNavbar> */}
-        </Suspense>
-        {/* </ImagesProvider> */}
-        {/* </UserProvider> */}
+            {/* <CustomNavbar> */}
+            <AppRoutes />
+            {/* </CustomNavbar> */}
+          </Suspense>
+          {/* </ImagesProvider> */}
+        </UserProvider>
       </NetworkProvider>
     </BrowserRouter>
   );
