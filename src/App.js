@@ -5,12 +5,12 @@ import {
   Navigate,
   useSearchParams,
 } from "react-router-dom";
-// import CustomNavbar from "./components/navbar/CustomNavbar";
+import CustomNavbar from "./components/navbar/CustomNavbar";
 // import { UserProvider } from "./customHooks/UserContext";
 // import { ImagesProvider } from "./customHooks/ImagesContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
-// import { NetworkProvider } from "./customHooks/network-context";
+import { NetworkProvider } from "./customHooks/network-context";
 import OfflineFallback from "./OfflineFallback";
 
 import { getToken } from "firebase/messaging";
@@ -48,7 +48,8 @@ const AppRoutes = React.memo(() => {
     },
     {
       path: "/",
-      element: <>hola</>,
+      // element: <Home />,
+      element: <>hola2</>,
     },
     {
       path: "/offline",
@@ -105,17 +106,19 @@ const App = () => {
 
   return (
     <BrowserRouter basename={"/"}>
-      {/* <UserProvider> */}
-      {/* <ImagesProvider> */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <ToastContainer />
+      <NetworkProvider>
+        {/* <UserProvider> */}
+        {/* <ImagesProvider> */}
+        <Suspense fallback={<div>Loading...</div>}>
+          <ToastContainer />
 
-        {/* <CustomNavbar> */}
-        <AppRoutes />
-        {/* </CustomNavbar> */}
-      </Suspense>
-      {/* </ImagesProvider> */}
-      {/* </UserProvider> */}
+          <CustomNavbar>
+            <AppRoutes />
+          </CustomNavbar>
+        </Suspense>
+        {/* </ImagesProvider> */}
+        {/* </UserProvider> */}
+      </NetworkProvider>
     </BrowserRouter>
   );
 };
