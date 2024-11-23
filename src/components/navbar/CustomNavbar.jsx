@@ -1,6 +1,6 @@
-import React, { useContext, useEffect } from "react";
-import { Navbar, IconButton } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+// import { Navbar, IconButton } from "@material-tailwind/react";
+// import { Link } from "react-router-dom";
 import { UserContext } from "../../customHooks/UserContext";
 // import Logo from "../../assets/logos/logo40.svg";
 // import { useNavigate } from "react-router-dom";
@@ -22,14 +22,14 @@ function CustomNavbar({ children }) {
   // const isActive = (path) => {
   //   return location.pathname === path;
   // };
-  const [openNav, setOpenNav] = React.useState(false);
+  // const [openNav, setOpenNav] = React.useState(false);
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener(
+  //     "resize",
+  //     () => window.innerWidth >= 960 && setOpenNav(false)
+  //   );
+  // }, []);
 
   // const navList = (
   //   <ul className="flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 w-full py-">
@@ -86,15 +86,15 @@ function CustomNavbar({ children }) {
 
   return (
     <div>
-      <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
+      {/* <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="text-blue-gray-900 mx-14 flex items-center justify-between">
           <div className="mr-4 flex cursor-pointer items-center gap-2 py-1.5 font-medium">
             <Link to="/">
-              {/* <img src={Logo} alt="Logo" width="40" height="40" /> */}
+              <img src={Logo} alt="Logo" width="40" height="40" />
             </Link>
           </div>
           <div className="flex items-center gap-4">
-            {/* <div className="hidden lg:block">{navList}</div> */}
+            <div className="hidden lg:block">{navList}</div>
 
             <IconButton
               variant="text"
@@ -136,14 +136,14 @@ function CustomNavbar({ children }) {
           </div>
         </div>
 
-        {/* <Collapse
+        <Collapse
           open={openNav}
           className="flex justify-center flex-col items-center w-full"
         >
           {navList}
-        </Collapse> */}
-      </Navbar>
-      <div className="h-[calc(100vh-6em)] p-8">{children}</div>{" "}
+        </Collapse>
+      </Navbar> */}
+      <div className="h-[calc(100vh-6em)] p-8">{children}</div>
     </div>
   );
 }
