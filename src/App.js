@@ -16,7 +16,7 @@ import OfflineFallback from "./OfflineFallback";
 import { getToken } from "firebase/messaging";
 import { messaging } from "./firebase";
 
-// const Home = lazy(() => import("./pages/Home/Home"));
+const Home = lazy(() => import("./pages/Home/Home"));
 const Perfil = lazy(() => import("./pages/Perfil/Perfi"));
 const Login = lazy(() => import("./pages/Login/Login"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -48,8 +48,7 @@ const AppRoutes = React.memo(() => {
     },
     {
       path: "/",
-      // element: <Home />,
-      element: <>hola2</>,
+      element: <Home />,
     },
     {
       path: "/offline",
