@@ -17,7 +17,7 @@ import { getToken } from "firebase/messaging";
 import { messaging } from "./firebase";
 
 const Home = lazy(() => import("./pages/Home/Home"));
-const Perfil = lazy(() => import("./pages/Perfil/Perfi"));
+// const Perfil = lazy(() => import("./pages/Perfil/Perfi"));
 const Login = lazy(() => import("./pages/Login/Login"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const CategoryView = lazy(() => import("./pages/CategoryView/CategoryView"));
@@ -31,7 +31,7 @@ const AppRoutes = React.memo(() => {
   return useRoutes([
     {
       path: "/profile",
-      element: user ? <Perfil /> : <Navigate to="/login" replace={true} />,
+      element: user ? <></> : <Navigate to="/login" replace={true} />,
     },
     {
       path: "/library",
