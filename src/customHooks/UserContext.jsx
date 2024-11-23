@@ -5,11 +5,17 @@ const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [userLocalStorage, setUserLocalStorage] = useState(
-    JSON.parse(localStorage.getItem("authState")) || null
-  );
+  const [userLocalStorage, setUserLocalStorage] = useState(null);
+
   const [userRefresh, setUserRefresh] = useState(false);
   const [userCategories, setUserCategories] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUser = JSON.parse(localStorage.getItem("authState")) || null;
+      setUserLocalStorage(storedUser);
+    }
+  }, []);
 
   const getUserFromMongo = useCallback(() => {
     if (!userLocalStorage) {
@@ -40,6 +46,11 @@ const UserProvider = ({ children }) => {
     localStorage.removeItem("authState");
     setUser(null);
   };
+
+  useEffect(() => {
+    console.log("UserContext initialized with user:", user);
+    console.log("UserLocalStorage:", userLocalStorage);
+  }, [user, userLocalStorage]);
 
   return (
     <UserContext.Provider

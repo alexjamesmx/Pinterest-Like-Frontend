@@ -8,6 +8,9 @@ import PropTypes from "prop-types";
 
 function CustomNavbar({ children }) {
   const { user, logout } = useContext(UserContext);
+  console.log("CustomNavbar user:", user);
+  console.log("CustomNavbar logout function:", logout);
+
   const location = useLocation();
   const navigate = useNavigate();
 

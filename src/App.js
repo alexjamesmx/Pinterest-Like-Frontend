@@ -111,7 +111,6 @@ const App = () => {
           <ImagesProvider>
             <Suspense fallback={<div>Loading...</div>}>
               <ToastContainer />
-
               <CustomNavbar>
                 <AppRoutes />
               </CustomNavbar>
