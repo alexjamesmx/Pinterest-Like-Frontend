@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 // import { Navbar, IconButton } from "@material-tailwind/react";
 // import { Link } from "react-router-dom";
 import { UserContext } from "../../customHooks/UserContext";
 // import Logo from "../../assets/logos/logo40.svg";
 // import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IconButton, Navbar } from "@material-tailwind/react";
+// import { IconButton, Navbar } from "@material-tailwind/react";
 // import { Link } from "react-router-dom";
 
 function CustomNavbar({ children }) {
@@ -24,14 +24,14 @@ function CustomNavbar({ children }) {
   // const isActive = (path) => {
   //   return location.pathname === path;
   // };
-  const [openNav, setOpenNav] = useState(false);
+  // const [openNav, setOpenNav] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener(
+  //     "resize",
+  //     () => window.innerWidth >= 960 && setOpenNav(false)
+  //   );
+  // }, []);
 
   // const navList = (
   //   <ul className="flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6 w-full py-">
