@@ -6,7 +6,7 @@ import { UserContext } from "../../customHooks/UserContext";
 // import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { IconButton, Navbar } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function CustomNavbar({ children }) {
   const { user, logout } = useContext(UserContext);
@@ -91,9 +91,9 @@ function CustomNavbar({ children }) {
       <Navbar className="sticky top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="text-blue-gray-900 mx-14 flex items-center justify-between">
           <div className="mr-4 flex cursor-pointer items-center gap-2 py-1.5 font-medium">
-            <Link to="/">
-              {/* <img src={Logo} alt="Logo" width="40" height="40" /> */}
-            </Link>
+            {/* <Link to="/">
+              <img src={Logo} alt="Logo" width="40" height="40" />
+            </Link> */}
           </div>
           <div className="flex items-center gap-4">
             {/* <div className="hidden lg:block">{navList}</div> */}
@@ -108,7 +108,7 @@ function CustomNavbar({ children }) {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  className="h-6 w-6"
+                  className="size-6"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -122,7 +122,7 @@ function CustomNavbar({ children }) {
               ) : (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
+                  className="size-6"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth={2}
