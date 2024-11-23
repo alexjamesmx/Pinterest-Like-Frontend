@@ -5,7 +5,6 @@ import { UserContext } from "../../customHooks/UserContext";
 import Logo from "../../assets/logos/logo40.svg";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 
 function CustomNavbar({ children }) {
   const { user, logout } = useContext(UserContext);
