@@ -52,16 +52,16 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center h-[calc(100vh-200px)]">
-      <div className="bg-white p-8 rounded-lg shadow-md bg-gradient-to-r from-pink-500 to-purple-500 max-w-md w-full h-2/5 flex justify-center flex-col">
-        <h2 className="text-3xl font-bold mb-4 text-center">Login</h2>
+      <div className="h-2/5 flex justify-center flex-col">
+        <h2 className="text-3xl font-bold mb-4 text-center red">Login</h2>
         <button
           onClick={logGoogleUser}
-          className="bg-white text-black font-bold py-2 px-4 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
+          className="bg-blue-gray-100 text-black font-bold py-2 px-4 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors duration-300"
         >
           <img
             src={googleIcon}
             alt="Google icon"
-            className="mr-2"
+            className="bg-blue-gray-200  mr-2 rounded border-amber-900 bg-gradient-to-r from-pink-500 to-purple-500 shadow-md"
             width={40}
             height={40}
           />
