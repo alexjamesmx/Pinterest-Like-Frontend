@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Navbar, IconButton } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../customHooks/UserContext";
 import Logo from "../../assets/logos/logo40.svg";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
-import { IconButton, Navbar } from "@material-tailwind/react";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 function CustomNavbar({ children }) {
