@@ -19,16 +19,22 @@ const UserProvider = ({ children }) => {
 
   const getUserFromMongo = useCallback(() => {
     if (!userLocalStorage) {
+      console.log("No userLocalStorage found, skipping API call.");
       return null;
     }
+    console.log("Fetching user from API:", userLocalStorage._id);
+
     axios
       .get(process.env.REACT_APP_BACK_API + "/users/" + userLocalStorage._id)
       .then((res) => {
         if (res.status === 200) {
+          console.log("User fetched from API:", res.data);
+
           setUser(res.data);
           setUserCategories(res.data.categories);
           localStorage.setItem("authState", JSON.stringify(res.data));
         } else {
+          console.log("API response not 200:", res.status);
           return null;
         }
       })
